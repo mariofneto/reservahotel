@@ -1,8 +1,17 @@
 package com.github.mariofneto.reservahotel.domains;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.OneToOne;
+import jakarta.persistence.Table;
+
+@Entity
+@Table(name = "quartos")
 public class Quarto {
+    @Id
     private Long numero; // sera a primary key
     private Double valorHospedagem;
+    @OneToOne
     private Reserva reserva;
 
     public Quarto() {

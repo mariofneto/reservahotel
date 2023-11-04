@@ -1,0 +1,27 @@
+CREATE TABLE pessoas{
+    id BIGINT PRIMARY KEY,
+    nome VARCHAR(100) NOT NULL,
+    idade INT NOT NULL,
+    sexo CHAR NOT NULL
+    reserva_id BIGINT FOREIGN KEY REFERENCES reservas(id)
+}
+
+CREATE TABLE reservas{
+    id BIGINT PRIMARY KEY,
+    checkin datetime2 NOT NULL,
+    dias_reservados INT NOT NULL,
+    pessoa_id BIGINT FOREIGN KEY REFERENCES pessoas(id)
+    quarto_id BIGINT FOREIGN KEY REFERENCES quartos(numero)
+}
+
+CREATE TABLE quartos{
+    numero BIGINT PRIMARY KEY,
+    valor_hospedagem FLOAT NOT NULL,
+    reserva_id BIGINT FOREIGN KEY REFERENCES reservas(id)
+}
+
+CREATE TABLE hoteis{
+    id BIGINT PRIMARY KEY,
+    nome VARCHAR(100) NOT NULL,
+    quarto_id BIGINT FOREIGN KEY REFERENCES quartos(numero)
+}
